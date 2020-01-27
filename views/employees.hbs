@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            Employees
+            <a href="/employees/add" class="btn btn-success pull-right">Add New Employee</a>
+        </h2>
+        <hr />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Employee Num</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Manager ID</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Hired On</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each employees}}
+                    <tr>
+                        <td>{{employeeNum}}</td>
+                        <td><a href="/employee/{{employeeNum}}">{{firstName}} {{lastName}}</a></td>
+                        <td><a href="mailto:{{email}}">{{email}}</a></td>
+                        <td>{{addressStreet}} {{addressCity}} {{addressState}} {{addressPostal}}</td>
+                        <td><a href="/employees?manager={{employeeManagerNum}}">{{employeeManagerNum}}</a></td>
+                        <td><a href="/employees?status={{status}}">{{status}}</a></td>
+                        <td><a href="/employees?department={{department}}">{{department}}</a></td>
+                        <td>{{hireDate}}</td>
+                        <td><a href="/employees/delete/{{employeeNum}}" class="btn btn-danger">remove</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{#unless employees}}
+        <div class="col-md-12 text-center">
+            <strong>{{message}}</strong>
+        </div>
+    {{/unless}}
+</div>
